@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+  <link rel="stylesheet" href="navStyle.css">
+  <link rel="stylesheet" href="index.css">
+
+  <title> Space tourism Home</title>
+</head>
+
+<body>
+  <!-- Full content of the page start from here  -->
+  <div class="hero">
+    <!-- Navigation start from here  -->
+    <nav class="navbar" role="navigation">
+      <img src="./assets/shared/logo.svg" alt="logo image">
+      <div class="line_in_nav"></div>
+      <div id="togglebtn"><img src="./assets/shared/icon-hamburger.svg" alt="open Menu" id="burger" class="burger">
+      </div>
+      <ul class="navlists" id="navlist">
+        <li><a href="index.html" id="ho"></a></li>
+        <li><a href="destination.html" id="de"></a></li>
+        <li><a href="crew.html" id="cr"></a></li>
+        <li><a href="technology.html" id="te"></a></li>
+      </ul>
+    </nav>
+    <!-- navigation end  -->
+
+    <!-- Page description and rest of body content start -->
+    <div class="container_alpha">
+
+      <div class="home_msg">
+        <p id="sotravel"></p>
+        <p id="space"></p>
+        <p id="para1">!</p>
+      </div>
+      <div class="white_circle">
+        <a id="Explore" href="crew.html" onclick="changeCrew(4)">Explore</a>
+      </div>
+    </div>
+    <!-- page Description ends -->
+  </div>
+  <!-- External Javascript file for navbar here -->
+  <script src="main.js"></script>
+  <!-- fetching data for the inner contents -->
+  <script>
+    const Travel = document.getElementById("sotravel");
+    const space = document.getElementById("space");
+    const description = document.getElementById("para1");
+
+    fetch("data.json")
+      .then(response => response.json())
+      .then(data =>{
+        const mainData = data.home;
+        Travel.innerText =  mainData.travel;
+        space.innerText = mainData.space;
+        description.innerText = mainData.description
+      })
+      .catch(error => alert("Fetching data problem :",error));
+  </script>
+</body>
+
+</html>

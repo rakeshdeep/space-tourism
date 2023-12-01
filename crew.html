@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+  <link rel="stylesheet" href="navStyle.css">
+  <link rel="stylesheet" href="crew.css">
+
+  <title> Space tourism Crew Member's details page</title>
+</head>
+
+<body>
+  <!-- main body of the page  -->
+  <div class="hero">
+    <!-- navigation start from here  -->
+    <nav class="navbar" role="navigation">
+      <img src="./assets/shared/logo.svg" alt="logo image">
+      <div class="line_in_nav"></div>
+      <div id="togglebtn"><img src="./assets/shared/icon-hamburger.svg" alt="open Menu" id="burger" class="burger">
+      </div>
+      <ul class="navlists" id="navlist">
+        <li><a href="index.html" id="ho"></a></li>
+        <li><a href="destination.html" id="de"></a></li>
+        <li><a href="crew.html" id="cr"></a></li>
+        <li><a href="technology.html" id="te"></a></li>
+      </ul>
+    </nav>
+    <!-- navigation ends here  -->
+
+    <!-- Crew members details section start -->
+    <h2 id="MeetCrew"></h2>
+    <div class="crewBox">
+      <div class="crewDetails">
+        <p id="role"></p>
+        <p id="memberName"></p>
+        <p id="aboutCrewMember"></p>
+        <!-- changing crew member's details using the dots section start -->
+        <div class="pagination">
+          <span class="dots" onclick="ChangeCrew(0)"></span>
+          <span class="dots" onclick="ChangeCrew(1)"></span>
+          <span class="dots" onclick="ChangeCrew(2)"></span>
+          <span class="dots" onclick="ChangeCrew(3)"></span>
+          <span class="dots" onclick="ChangeCrew(4)"></span>
+        </div>
+        <!-- changing crew member's details using dots section end -->
+      </div>
+      <!-- Crew Member image Area -->
+      <div class="imageBox" id="imageBox">
+        <img src="" alt=" no default image" id="memberImg">
+      </div>
+    </div>
+    <!-- Crew members details section ends here -->
+  </div>
+</body>
+<script src="main.js"></script>
+
+<!-- Javascript start from here using the script tag to add dynamic -->
+<script>
+  function ChangeCrew(index) {
+    
+    const styleDoyts = document.getElementsByClassName("dots");
+    fetch("data.json")
+      .then(response => response.json())
+      .then(data => {
+        let crew = data.crew[index];
+        document.getElementById("MeetCrew").innerText = data.titles.crewtitle;
+
+        document.getElementById("role").innerText = crew.role;
+
+        document.getElementById("memberName").innerText = crew.name;
+
+        document.getElementById("aboutCrewMember").innerText = crew.bio;
+
+        const ImgElement = document.getElementById("memberImg");
+        ImgElement.setAttribute("src", crew.images);
+        ImgElement.setAttribute("alt", crew.name + `'s image`);
+        ImgElement.classList.add('Anime')
+      })
+      .catch(error => alert("Error on fetching data.json", error));
+    for (let k = 0; k <= 4; k++) {
+        if (k != index)
+          styleDoyts[k].style = "background-color : #808080";
+        else
+          styleDoyts[k].style = "background-color: #fff";           
+      }   
+  }
+  ChangeCrew(0); 
+</script> 
+
+</html>

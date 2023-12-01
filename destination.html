@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+  <link rel="stylesheet" href="navStyle.css">
+  <link rel="stylesheet" href="destination.css">
+  <title> Space tourism Destinations</title>
+</head>
+
+<body>
+  <!-- Hero section of the page start from here  -->
+  <div class="hero">
+    <!-- main Navigation of the page start  -->
+    <nav class="navbar" role="navigation">
+      <img src="./assets/shared/logo.svg" alt="logo image">
+      <div class="line_in_nav"></div>
+      <div id="togglebtn"><img src="./assets/shared/icon-hamburger.svg" alt="open Menu" id="burger" class="burger">
+      </div>
+      <ul class="navlists" id="navlist">
+        <li><a href="index.html" id="ho"></a></li>
+        <li><a href="destination.html" id="de"></a></li>
+        <li><a href="crew.html" id="cr"></a></li>
+        <li><a href="technology.html" id="te"></a></li>
+      </ul>
+    </nav>
+    <!-- main navigation ends here -->
+    <h2 id="pickDesti"></h2>
+    <div class="planetArea">
+      <!-- Planet's Image Area -->
+      <img id="planetImg" src="" alt="">
+      <!-- sub navigation to change planets start from here -->
+      <ul class="planetlist">
+        <li onclick="changePlanet(0)" class="planetItem"><span class="spans"></span></li>
+        <li onclick="changePlanet(1)" class="planetItem"><span class="spans"></span></li>
+        <li onclick="changePlanet(2)" class="planetItem"><span class="spans"></span></li>
+        <li onclick="changePlanet(3)" class="planetItem"><span class="spans"></span></li>
+      </ul>
+      <!-- sub navigation ends -->
+
+      <!-- planet description section start  -->
+      <div class="planet_details">
+        <p id="planetName"></p>
+        <p id="planetDescription"></p>
+        <div class="line_in_palnetArea"></div>
+        <div class="dist_time">
+          <div class="dist">
+            <p>avg.distance</p>
+            <p id="distance"></p>
+          </div>
+          <div class="time">
+            <p>est. travel time</p>
+            <p id="time"></p>
+          </div>
+        </div>
+      </div>
+      <!-- planet description ends here -->
+    </div>
+  </div>
+</body>
+<!-- external javascript file for navbar action -->
+<script src="main.js"></script>
+
+<!-- Internal javascript for using JSON data -->
+<script>
+
+  const getPlist = document.getElementsByClassName("planetItem");
+
+  function changePlanet(index) {
+
+    fetch("data.json")
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById("pickDesti").innerText = data.titles.destitle;
+
+        const spans = document.getElementsByClassName("spans");
+        for(let i=0; i<4; i++){
+          spans[i].innerText = data.destinations[i].name;
+        }
+
+        const planetImage = document.getElementById("planetImg");
+        planetImage.setAttribute("src", data.destinations[index].images.png);
+        planetImage.setAttribute("alt", data.destinations[index].name + " image");
+
+        document.getElementById("planetName").innerText = data.destinations[index].name;
+
+        document.getElementById("planetDescription").innerText = data.destinations[index].description;
+
+        document.getElementById("distance").innerText = data.destinations[index].distance;
+
+        document.getElementById("time").innerText = data.destinations[index].travel;
+      })
+      .catch(error => alert("Error On fetching data:", error));
+
+      for (let i = 0; i < 4; i++) {
+        if (i != index)
+          getPlist[i].classList.remove("borderBottom")
+        else
+          getPlist[i].classList.add("borderBottom")
+      }
+  }
+  changePlanet(0);
+
+</script>
+
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+  <link rel="stylesheet" href="navStyle.css">
+  <link rel="stylesheet" href="technology.css">
+  <title> Space tourism technology section </title>
+</head>
+
+<body>
+  <!-- main content start from here  -->
+  <div class="container">
+    <!-- navigation bar strat from here  -->
+    <nav class="navbar" role="navigation">
+      <img src="./assets/shared/logo.svg" alt="logo image">
+      <div class="line_in_nav"></div>
+      <div id="togglebtn"><img src="./assets/shared/icon-hamburger.svg" alt="open Menu" id="burger" class="burger">
+      </div>
+      <ul class="navlists" id="navlist">
+        <li><a href="index.html" id="ho"></a></li>
+        <li><a href="destination.html" id="de"></a></li>
+        <li><a href="crew.html" id="cr"></a></li>
+        <li><a href="technology.html" id="te"></a></li>
+      </ul>
+    </nav>
+    <!-- navigation bar ends -->
+    <h2 id="title03"></h2>
+    <!-- technology description section or parent decription start -->
+    <div class="wrapper">
+      <!-- technology description changing or pagination start -->
+      <div class="pagination">
+        <span class="circleNum" onclick="changeTech(0)">1</span>
+        <span class="circleNum" onclick="changeTech(1)">2</span>
+        <span class="circleNum" onclick="changeTech(2)">3</span>
+      </div>
+      <!-- Pagination end -->
+
+      <!-- technical Details section -->
+      <div class="techDetails">
+        <p id="termino">The terminology</p>
+        <p id="technoName"></p>
+        <p id="technoDesc"></p>
+      </div>
+      <!-- techical Details end -->
+      <div class="techImageWrapper">
+        <!-- Technology used Image -->
+        <img src="" alt="Technology used Image" id="technoImage">
+      </div>
+    </div>
+     <!--technology description section end  -->
+  </div>
+</body>
+<script src="main.js"></script>
+<script>
+  
+  function changeTech(index) {
+    
+    const stylecircle = document.getElementsByClassName("circleNum");
+
+    fetch('data.json')
+      .then(response => response.json())
+      .then(data => {
+
+        document.getElementById("title03").innerText = data.titles.techtitle;
+
+        document.getElementById("technoName").innerText = data.technology[index].name;
+
+        document.getElementById("technoDesc").innerText = data.technology[index].description;
+
+        const handleMediaQueryChange = (mediaQuery) => {
+        const technoImage = document.getElementById("technoImage");
+
+        if(window.innerWidth <= 780){
+            technoImage.setAttribute("src", data.technology[index].images.landscape)
+        technoImage.setAttribute("alt", data.technology[index].name + `'s image`);
+        }   
+        else{  
+            technoImage.setAttribute("src", data.technology[index].images.portrait)
+        technoImage.setAttribute("alt", data.technology[index].name + `'s image`);
+            
+        }
+    }
+    handleMediaQueryChange();
+    window.addEventListener('resize',handleMediaQueryChange);
+      })
+      .catch(error => alert("Error on fetching data.json", error));
+
+      for (let j = 0; j < 3; j++) {
+        if (j != index)
+          stylecircle[j].style = "border: 3px solid transparent";
+        else
+          stylecircle[j].style = "border: 3px solid grey; color : purple";
+  }
+}
+  changeTech(0);
+</script>
+
+</html>

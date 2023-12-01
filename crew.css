@@ -1,0 +1,145 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: #fff;
+}
+
+.navlists li:nth-child(3) {
+    border-bottom: 3px solid #fff !important;
+}
+
+.navlists li:nth-child(3) a {
+    color: #fff;
+}
+
+.hero {
+    background-image: url("./assets/crew/background-crew-mobile.jpg");
+    background-position: center center;
+    background-size: cover;
+    height: 100vh;
+    overflow-x: hidden;
+}
+
+#MeetCrew {
+    margin: 20px 0px 0px 0px;
+    text-transform: uppercase;
+    letter-spacing: 0.4rem;
+    line-height: 2rem;
+    text-align: center;
+}
+
+.crewBox {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 75vh;
+    flex-flow: row wrap;
+}
+
+.crewDetails {
+    margin-top: 20px;
+    width: 90%;
+    text-align: center;
+    display: flex;
+    flex-flow: column;
+}
+
+#role,
+#memberName {
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    color: #808080;
+    margin: 5px 0px;
+}
+
+#memberName {
+    color: #fff;
+    font-size: 22px;
+}
+
+#aboutCrewMember {
+    font-size: 18px;
+    letter-spacing: .1rem;
+    line-height: 1.5rem;
+    color: #ffffffce;
+    margin: 10px 0px;
+}
+
+.imageBox {
+    min-width: 300px;
+    border-bottom: 2px solid #808080;
+    position: relative;
+    overflow: hidden;
+    order: -1;
+}
+
+#memberImg {
+    transform: translateX(500px);
+    width: 350px;
+    animation: movingLine 4s ease 0s 1 normal forwards;
+    
+
+}
+
+@keyframes movingLine {
+    0% {
+        transform: translateX(500px);
+    }
+
+    100% {
+        transform: translateX(0px);
+
+    }
+}
+
+.pagination {
+    margin: 20px 5px;
+    order: -1;
+}
+
+.dots {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-color: #fff;
+    margin-left: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+@media screen and (min-width:780px) {
+    .hero {
+        overflow: hidden;
+        background-image: url("./assets/crew/background-crew-desktop.jpg");
+    }
+
+    #MeetCrew {
+        margin: 20px 0px 0px 40px;
+        text-align: left;
+    }
+
+    .crewBox {
+        justify-content: space-evenly;
+        align-items: center;
+        height: 75vh;
+    }
+
+    .crewDetails {
+        margin: 0;
+        text-align: left;
+        width: 40%;
+
+    }
+
+    #memberName {
+        font-size: 30px;
+    }
+    .imageBox{
+        order: 2;
+    }
+    .pagination {
+        order: 1;
+    }
+}

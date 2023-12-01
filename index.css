@@ -1,0 +1,141 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: #fff;
+}
+
+.navbar .navlists li:nth-child(1) {
+    border-bottom: 3px solid #fff !important;
+}
+
+.navlists li:nth-child(1) a {
+    color: #fff;
+}
+
+.hero {
+    background-image: url("./assets/home/background-home-mobile.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: visible;
+}
+
+.container_alpha {
+    margin: 0 auto;
+    height: 85vh;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.home_msg {
+    width: 100%;
+}
+
+.home_msg #sotravel {
+    font-size: 16px;
+    text-transform: uppercase;
+    margin: 10px 0px;
+    letter-spacing: .4rem;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.home_msg #space {
+    text-transform: uppercase;
+    font-size: 90px;
+    letter-spacing: 0.5rem;
+    margin: 10px 0px 20px 0px;
+}
+
+.home_msg #para1 {
+    font-size: 17px;
+    line-height: 1.5rem;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.white_circle {
+    width: 120px;
+    height: 120px;
+    background-color: #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px !important;
+    margin: 10px;
+
+}
+
+.white_circle a {
+    color: #000;
+    text-transform: uppercase;
+    letter-spacing: .2rem;
+    text-decoration: none;
+    cursor: pointer;
+}
+.white_circle a:hover{
+    color: #000000b6;
+}
+
+.white_circle:hover {
+    animation: HoverEffect 1s ease-in-out 0s infinite alternate none;
+}
+
+@keyframes HoverEffect {
+    0% {
+        box-shadow: 0px 0px 2.5px 20px #ffffff4f !important;
+    }
+
+    30% {
+        box-shadow: 0px 0px 5px 30px #ffffff4f;
+    }
+
+    60% {
+        box-shadow: 0px 0px 6px 35px #ffffff4f;
+    }
+
+    100% {
+        box-shadow: 0px 0px 8px 40px #ffffff4f;
+    }
+
+}
+
+@media only screen and (min-width:780px) {
+    .hero {
+        background-image: url("./assets/home/background-home-desktop.jpg");
+        overflow: hidden;
+    }
+
+    .container_alpha {
+        flex-direction: row;
+        justify-content: space-evenly;
+
+    }
+
+    .white_circle {
+        width: 190px;
+        height: 190px;
+    }
+
+    .home_msg {
+        width: 36%;
+    }
+
+    #sotravel {
+        font-size: 17px;
+    }
+
+    #space {
+        font-size: 110px;
+    }
+
+    #para1 {
+        font-size: 18px;
+    }
+}

@@ -1,0 +1,144 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: #fff;
+    /* border: 1px solid red; */
+}
+
+.navlists li:nth-child(4) {
+    border-bottom: 3px solid #fff !important;
+}
+
+.navlists li:nth-child(4) a {
+    color: #fff;
+}
+
+.container {
+    background-image: url('./assets/technology/background-technology-desktop.jpg');
+    background-position: center;
+    background-size: cover;
+    overflow-x: hidden;
+    overflow-y: visible;
+}
+
+#title03 {
+    margin: 10px 0px;
+    text-transform: uppercase;
+    letter-spacing: 0.4rem;
+    line-height: 2rem;
+    text-align: center;
+    font-size: 18px;
+}
+
+.wrapper {
+    height: 80vh;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.pagination {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.circleNum {
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    margin: 10px 0px 20px 10px;
+    border-radius: 50%;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #000;
+    font-size: 22px;
+    font-weight: 900;
+}
+
+.techDetails {
+    width: 100%;
+    margin: 10px 0px;
+    text-align: center;
+}
+
+#termino,
+#technoName {
+    font-size: 20px;
+    margin: 5px 0px;
+    letter-spacing: 0.2rem;
+    text-transform: uppercase;
+    color: #808080;
+    
+}
+
+#technoName {
+    font-size: 23px;
+    color: #fff;
+}
+
+#technoDesc {
+    margin: 10px;
+    font-size: 18px;
+    letter-spacing: .1rem;
+    line-height: 1.5rem;
+    color: #ffffffce;
+}
+
+.techImageWrapper {
+    width: 90%;
+    position: relative;
+    overflow: hidden;
+    order: -1;
+}
+
+#technoImage {
+    width: 100%;
+    transform: translateY(-450px);
+    animation: imageEffect 2s ease-in 0s 1 normal forwards;
+}
+
+@keyframes imageEffect {
+    0% {
+        transform: translateY(-450px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+@media screen and (min-width:780px) {
+    .container {
+        overflow: hidden;
+        height: 100vh;
+    }
+
+    #title03 {
+        margin: 20px 0px 0px 40px;
+        font-size: 25px;
+    }
+
+    .pagination {
+        width: auto;
+        display: block;
+    }
+
+    .techDetails {
+        width: 40%;
+        text-align: left;
+    }
+
+    #technoDesc {
+        margin: 0;
+    }
+
+    .techImageWrapper {
+        width: 30%;
+        order: 1;
+    }
+}
