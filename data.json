@@ -107,13 +107,13 @@
     }
   ],
   "titles":{
-    "destitle": "01 pick your description",
+    "destitle": "01 pick your destination",
     "crewtitle": "02 meet your crew",
     "techtitle": "03 space launch 101"
   },
   "navtitle":{
     "ho": "01 home",
-    "de": "02 description",
+    "de": "02 destination",
     "cr": "03 crew",
     "te": "04 technology"
   }
